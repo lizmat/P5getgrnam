@@ -1,5 +1,5 @@
 use v6.c;
-unit module P5getgrnam:ver<0.0.1>:auth<cpan:ELIZABETH>;
+unit module P5getgrnam:ver<0.0.2>:auth<cpan:ELIZABETH>;
 
 use NativeCall;
 
@@ -14,7 +14,18 @@ my class GrStruct is repr<CStruct> {
             $gid ?? $.gr_gid !! $.gr_name
         }
         else {
-            ($.gr_name,$.gr_passwd,$.gr_gid,$.gr_mem)
+            my @members;
+            with $.gr_mem -> $members {
+                for 0..* {
+                    with $members[$_] -> $member {
+                        @members.push($member)
+                    }
+                    else {
+                        last
+                    }
+                }
+            }
+            ($.gr_name,$.gr_passwd,$.gr_gid,@members.join(" "))
         }
     }
 }

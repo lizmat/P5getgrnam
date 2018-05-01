@@ -2,7 +2,7 @@ use v6.c;
 use Test;
 use P5getgrnam;
 
-plan 10;
+plan 12;
 
 my int $groupid = +$*GROUP;
 ok $groupid > 0, 'did we get a group ID';
@@ -13,11 +13,13 @@ ok $groupname ~~ m/^ \w+ /, 'did we get a name';
 my @result = getgrgid($groupid);
 is @result[0], $groupname, 'did we get the groupname in this struct by gid';
 is @result[2], $groupid,   'did we get the groupid in this struct by gid';
+ok @result[3] ~~ Str,      'did we get the members by gid';
 
 is getgrnam($groupname, :scalar), $groupid, 'did we get the gid';
 @result = getgrnam($groupname);
 is @result[0], $groupname, 'did we get the groupname in this struct by name';
 is @result[2], $groupid,   'did we get the groupid in this struct by name';
+ok @result[3] ~~ Str,      'did we get the members by name';
 
 @result = getgrent;
 ok @result, 'did we get anything from getgrent';
