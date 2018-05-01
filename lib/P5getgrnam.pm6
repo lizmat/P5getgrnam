@@ -7,7 +7,7 @@ my class GrStruct is repr<CStruct> {
     has Str         $.gr_name;
     has Str         $.gr_passwd;
     has uint32      $.gr_gid;
-    has CArray[Str] $.gr_mem is rw;
+    has CArray[Str] $.gr_mem;
 
     method result(:$scalar, :$gid) {
         if $scalar {
