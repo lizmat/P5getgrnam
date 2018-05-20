@@ -2,12 +2,15 @@ Revision history for P5getgrnam
 
 {{$NEXT}}
 
+0.0.5  2018-05-20T13:07:47+02:00
+    - Added original Perl 5 documentation
+
 0.0.4  2018-05-03T15:46:32+02:00
-    - add support for setgrent, which somehow got forgotten
-    - add tests for undocumented return value of endgrent / setgrent
+    - Added support for setgrent, which somehow got forgotten
+    - Added tests for undocumented return value of endgrent / setgrent
 
 0.0.3  2018-05-02T12:26:39+02:00
-    - make sure getgrnam and getgrgid also handle failure gracefully
+    - Make sure getgrnam and getgrgid also handle failure gracefully
 
 0.0.2  2018-05-01T15:38:09+02:00
     - Fix the way the gr_mem field is exposed

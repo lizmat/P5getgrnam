@@ -1,5 +1,6 @@
 use v6.c;
-unit module P5getgrnam:ver<0.0.4>:auth<cpan:ELIZABETH>;
+
+unit module P5getgrnam:ver<0.0.5>:auth<cpan:ELIZABETH>;
 
 use NativeCall;
 
@@ -79,6 +80,31 @@ This module tries to mimic the behaviour of the C<getgrnam> and associated
 functions of Perl 5 as closely as possible.  It exports:
 
     endgrent getgrent getgrgid getgrnam setgrent
+
+=head1 ORIGINAL PERL 5 DOCUMENTATION
+
+    getgrnam NAME
+    getgrgid GID
+    getgrent
+    setgrent
+    endgrent
+            These routines are the same as their counterparts in the system C
+            library. In list context, the return values from the various get
+            routines are as follows:
+
+             # 0        1          2           3         4
+             ( $name,   $passwd,   $gid,       $members  ) = getgr*
+
+            In scalar context, you get the name, unless the function was a
+            lookup by name, in which case you get the other thing, whatever it
+            is. (If the entry doesn't exist you get the undefined value.) For
+            example:
+
+                $gid   = getgrnam($name);
+                $name  = getgrgid($num);
+
+            The $members value returned by getgr*() is a space-separated list
+            of the login names of the members of the group.
 
 =head1 AUTHOR
 
