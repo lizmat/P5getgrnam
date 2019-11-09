@@ -5,7 +5,7 @@
   ],
   "build-depends" : [ ],
   "depends" : [ ],
-  "description" : "Implement Perl 5's getgrnam() and associated built-ins",
+  "description" : "Implement Perl's getgrnam() and associated built-ins",
   "license" : "Artistic-2.0",
   "name" : "P5getgrnam",
   "perl" : "6.c",
@@ -19,5 +19,5 @@
     "CPAN5"
   ],
   "test-depends" : [ ],
-  "version" : "0.0.6"
+  "version" : "0.0.7"
 }

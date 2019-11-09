@@ -2,7 +2,7 @@ use v6.c;
 
 use NativeCall;
 
-unit module P5getgrnam:ver<0.0.6>:auth<cpan:ELIZABETH>;
+unit module P5getgrnam:ver<0.0.7>:auth<cpan:ELIZABETH>;
 
 # handling the result struct
 my class GrStruct is repr<CStruct> {
@@ -75,19 +75,19 @@ multi sub getgrent() { _getgrent.list }
 
 my sub setgrent() is export {
     _setgrent;
-    1;  # this is apparently what Perl 5 does, although not documented
+    1;  # this is apparently what Perl does, although not documented
 }
 
 my sub endgrent() is export {
     _endgrent;
-    1;  # this is apparently what Perl 5 does, although not documented
+    1;  # this is apparently what Perl does, although not documented
 }
 
 =begin pod
 
 =head1 NAME
 
-P5getgrnam - Implement Perl 5's getgrnam() and associated built-ins
+P5getgrnam - Implement Perl's getgrnam() and associated built-ins
 
 =head1 SYNOPSIS
 
@@ -98,7 +98,7 @@ P5getgrnam - Implement Perl 5's getgrnam() and associated built-ins
 =head1 DESCRIPTION
 
 This module tries to mimic the behaviour of the C<getgrnam> and associated
-functions of Perl 5 as closely as possible.  It exports:
+functions of Perl as closely as possible.  It exports:
 
     endgrent getgrent getgrgid getgrnam setgrent
 
@@ -138,7 +138,7 @@ Pull Requests are welcome.
 
 Copyright 2018-2019 Elizabeth Mattijsen
 
-Re-imagined from Perl 5 as part of the CPAN Butterfly Plan.
+Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
