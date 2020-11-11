@@ -1,7 +1,7 @@
 NAME
 ====
 
-P5getgrnam - Implement Perl's getgrnam() and associated built-ins
+Raku port of Perl's getgrnam() and associated built-ins
 
 SYNOPSIS
 ========
@@ -13,7 +13,9 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
-This module tries to mimic the behaviour of the `getgrnam` and associated functions of Perl as closely as possible. It exports:
+This module tries to mimic the behaviour of Perl's `getgrnam` and associated built-ins as closely as possible in the Raku Programming Language.
+
+It exports:
 
     endgrent getgrent getgrgid getgrnam setgrent
 
@@ -43,6 +45,11 @@ ORIGINAL PERL 5 DOCUMENTATION
             The $members value returned by getgr*() is a space-separated list
             of the login names of the members of the group.
 
+PORTING CAVEATS
+===============
+
+This module depends on the availability of POSIX semantics. This is generally not available on Windows, so this module will probably not work on Windows.
+
 AUTHOR
 ======
 
@@ -53,7 +60,7 @@ Source can be located at: https://github.com/lizmat/P5getgrnam . Comments and Pu
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2018-2019 Elizabeth Mattijsen
+Copyright 2018-2020 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 

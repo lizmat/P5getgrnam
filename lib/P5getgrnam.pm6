@@ -1,8 +1,8 @@
-use v6.c;
+use v6.*;
 
 use NativeCall;
 
-unit module P5getgrnam:ver<0.0.7>:auth<cpan:ELIZABETH>;
+unit module P5getgrnam:ver<0.0.8>:auth<cpan:ELIZABETH>;
 
 # handling the result struct
 my class GrStruct is repr<CStruct> {
@@ -87,7 +87,7 @@ my sub endgrent() is export {
 
 =head1 NAME
 
-P5getgrnam - Implement Perl's getgrnam() and associated built-ins
+Raku port of Perl's getgrnam() and associated built-ins
 
 =head1 SYNOPSIS
 
@@ -97,8 +97,10 @@ P5getgrnam - Implement Perl's getgrnam() and associated built-ins
 
 =head1 DESCRIPTION
 
-This module tries to mimic the behaviour of the C<getgrnam> and associated
-functions of Perl as closely as possible.  It exports:
+This module tries to mimic the behaviour of Perl's C<getgrnam> and associated
+built-ins as closely as possible in the Raku Programming Language.
+
+It exports:
 
     endgrent getgrent getgrgid getgrnam setgrent
 
@@ -127,6 +129,12 @@ functions of Perl as closely as possible.  It exports:
             The $members value returned by getgr*() is a space-separated list
             of the login names of the members of the group.
 
+=head1 PORTING CAVEATS
+
+This module depends on the availability of POSIX semantics.  This is
+generally not available on Windows, so this module will probably not work
+on Windows.
+
 =head1 AUTHOR
 
 Elizabeth Mattijsen <liz@wenzperl.nl>
@@ -136,10 +144,12 @@ Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018-2019 Elizabeth Mattijsen
+Copyright 2018-2020 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
 =end pod
+
+# vim: expandtab shiftwidth=4

@@ -1,4 +1,4 @@
-use v6.c;
+use v6.*;
 use Test;
 use P5getgrnam;
 %*ENV<RAKUDO_NO_DEPRECATIONS> = True;
@@ -48,4 +48,4 @@ is-deeply getgrgid(9999), (), 'non-existing gid';
 is getgrgid(Scalar, 9999), Nil, 'non-existing name gid';
 is getgrgid(9999, :scalar), Nil, 'non-existing name gid';
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4
