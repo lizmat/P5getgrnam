@@ -1,8 +1,4 @@
-use v6.*;
-
 use NativeCall;
-
-unit module P5getgrnam:ver<0.0.9>:auth<zef:lizmat>;
 
 # handling the result struct
 my class GrStruct is repr<CStruct> {
@@ -41,21 +37,10 @@ sub _endgrent() is native is symbol<endgrent> {*}
 # actual exported subs
 my proto sub getgrnam(|) is export {*}
 multi sub getgrnam(Scalar:U, Str() $name) { _getgrnam($name).scalar }
-multi sub getgrnam(Str() $name, :$scalar!)
-  is DEPRECATED('Scalar as first positional')
-{
-    _getgrnam($name).scalar
-}
 multi sub getgrnam(Str() $name) { _getgrnam($name).list }
 
 my proto sub getgrgid(|) is export {*}
 multi sub getgrgid(Scalar:U, Int() $gid) {
-    my uint32 $ngid = $gid;
-    _getgrgid($ngid).scalar(:name)
-}
-multi sub getgrgid(Int() $gid, :$scalar!)
-  is DEPRECATED('Scalar as first positional')
-{
     my uint32 $ngid = $gid;
     _getgrgid($ngid).scalar(:name)
 }
@@ -66,11 +51,6 @@ multi sub getgrgid(Int() $gid) {
 
 my proto sub getgrent(|) is export {*}
 multi sub getgrent(Scalar:U) { _getgrent.scalar }
-multi sub getgrent(:$scalar!)
-  is DEPRECATED('Scalar as first positional')
-{
-    _getgrent.scalar
-}
 multi sub getgrent() { _getgrent.list }
 
 my sub setgrent() is export {
@@ -139,12 +119,16 @@ on Windows.
 
 Elizabeth Mattijsen <liz@raku.rocks>
 
+If you like this module, or what I’m doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
 Source can be located at: https://github.com/lizmat/P5getgrnam . Comments and
 Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018, 2019, 2020, 2021 Elizabeth Mattijsen
+Copyright 2018, 2019, 2020, 2021, 2023 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
